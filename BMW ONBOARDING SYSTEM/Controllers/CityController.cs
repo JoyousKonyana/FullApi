@@ -28,7 +28,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<CityViewModel>> CreateCity([FromBody] CityViewModel model)
@@ -51,7 +51,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = Role.Admin + "," + Role.Onboarder)]
+        //[Authorize(Roles = Role.Admin + "," + Role.Onboarder)]
         [HttpGet]
         [Route("[action]")]
         public async Task<ActionResult<City>> GetAllCities()
@@ -69,9 +69,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<CityViewModel>> UpdateCity(int id, CityViewModel updatedCityModel)
         {
             try
@@ -96,9 +96,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
             try

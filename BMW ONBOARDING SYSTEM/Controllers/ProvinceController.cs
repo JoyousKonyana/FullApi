@@ -51,7 +51,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Role.Onboarder + "," + Role.Admin)]
+        //[Authorize(Role.Onboarder + "," + Role.Admin)]
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllProvinces()
@@ -68,9 +68,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<ProvinceViewModel>> EditProvince(int id, ProvinceViewModel updatedProvinceModel)
         {
             try
@@ -95,9 +95,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteProvince(int id)
         {
             try

@@ -148,7 +148,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         [Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<CreateUserViewModel>> AssignUserRole(AssignedUserRoleViewModel updatedModel)
         {
             try
@@ -176,7 +176,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         }
 
-        [Authorize(Roles = Role.Onboarder + "," + Role.Admin + "," + Role.Manager)]
+        //[Authorize(Roles = Role.Onboarder + "," + Role.Admin + "," + Role.Manager)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<CreateUserViewModel>> ForgotPassword([FromBody] string userEmail)
@@ -255,17 +255,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             byte[] encrypted_bytes = sha1.ComputeHash(password_bytes);
             return Convert.ToBase64String(encrypted_bytes);
         }
-        //private static string getHash(string text)
-        //{
-        //    // SHA512 is disposable by inheritance.  
-        //    using (var sha256 = SHA256.Create())
-        //    {
-        //        // Send a sample text to hash.  
-        //        varhashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(text));
-        //        // Get the hashed string.  
-        //        ret.ToString(hashedBytes).Replace("-", "").ToLower();
-        //    }
-        //}
+      
 
         // create random password for user
         private static string CreateRandomPassword(int length = 6)

@@ -186,7 +186,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         //    return Ok();
         //}
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<LessonContentViewModel>> UploadContentLink([FromBody] LessonContentViewModel model)
@@ -211,7 +211,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         [Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<LessonContentViewModel>> AchiveLessonContent(int id, LessonContentViewModelDTO model)
         {
             try
@@ -248,9 +248,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
 
         //get lesson content associated with a specific lesson outcome
-        [Authorize(Roles = Role.Onboarder + "," + Role.Admin + "," + Role.Manager)]
+        //[Authorize(Roles = Role.Onboarder + "," + Role.Admin + "," + Role.Manager)]
         [HttpGet("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<LessonContentViewModel[]>> GetLessonContentByLessonOutcome(int id)
         {
             try

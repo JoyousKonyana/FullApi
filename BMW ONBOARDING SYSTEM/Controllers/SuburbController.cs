@@ -51,9 +51,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<SuburbViewModel>> UpdateSuburb(int id, [FromBody] SuburbViewModel updatedSuburbModel)
         {
             try
@@ -79,9 +79,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
             try

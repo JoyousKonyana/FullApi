@@ -42,7 +42,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllQueries()
@@ -58,7 +58,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return BadRequest();
             }
         }
-        [Authorize(Roles = Role.Onboarder)]
+        //[Authorize(Roles = Role.Onboarder)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<EquipmentQueryViewModelcs>> ReportEquipmentQuery([FromBody] EquipmentQueryViewModelcs model)

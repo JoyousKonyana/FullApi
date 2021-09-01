@@ -27,7 +27,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<PostalCodeViewModel>> CreatePostalCode([FromBody] PostalCodeViewModel model)
@@ -51,7 +51,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Onboarder)]
+        //[Authorize(Roles = Role.Onboarder)]
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllPostalCodes()
@@ -68,9 +68,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<PostalCodeViewModel>> UpdatePostalCode(int id, PostalCodeViewModel updatedPostalCodeModel)
         {
             try
@@ -95,9 +95,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeletePostalCode(int id)
         {
             try

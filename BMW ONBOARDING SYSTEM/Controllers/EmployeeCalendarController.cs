@@ -28,7 +28,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
 
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<EmployeeCalendarViewModel>> AddLink([FromBody] EmployeeCalendarViewModel model)
@@ -51,9 +51,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin + "," + Role.Onboarder)]
+        //[Authorize(Roles = Role.Admin + "," + Role.Onboarder)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteEmployeeCalendar(int id)
         {
             try

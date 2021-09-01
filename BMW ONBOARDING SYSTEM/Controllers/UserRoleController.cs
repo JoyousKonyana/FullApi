@@ -49,7 +49,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<UserRoleViewModel>> CreateUserRole([FromBody] UserRoleViewModel model)
@@ -72,7 +72,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
         [Route("[action]/{id}")]
         public async Task<ActionResult<UserRoleViewModel>> UpdateUserRole(int id, UserRoleViewModel updatedModel)
@@ -99,7 +99,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut]
         [Route("[action]")]
         public async Task<ActionResult<UserRoleViewModel>> AssignedUserRole([FromBody] AssignedUserRoleViewModel model)
@@ -127,7 +127,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
         [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteUserRole(int id)

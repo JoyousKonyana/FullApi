@@ -31,7 +31,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         [Authorize(Role.Admin)]
         [HttpGet("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         //getAll courses Assigeng to this a onboarder
         // used to show courses to onboarder
         public async Task<ActionResult<OnboarderCourseEnrollment[]>> GetAllCoursesAssignedToOnboarder(int empID)
@@ -138,7 +138,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Role.Onboarder)]
+        //[Authorize(Role.Onboarder)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<OnboarderCourseEnrollment>> GenerateCourseProgressReport([FromBody] OnboarderProgressViewModel model)

@@ -66,7 +66,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
         [Authorize(Role.Admin + "," + Role.Onboarder)]
         [HttpGet("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<LessonOutcomeViewModel>> GeLessonOutcomeByLessonId(int lessonID)
         {
             try
@@ -84,7 +84,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<LessonOutcomeViewModel>> CreateLessonOutcome([FromBody] LessonOutcomeViewModel model)
@@ -107,7 +107,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPut("name")]
         [Route("[action]")]
         public async Task<ActionResult<LessonOutcomeViewModel>> UpdateLessonOutcome(string name, LessonOutcomeViewModel updatedCourseModel)
@@ -135,9 +135,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteLessonOutcome(int id)
         {
             try

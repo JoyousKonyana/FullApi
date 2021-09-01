@@ -222,7 +222,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpGet("name")]
         [Route("[action]")]
         public async Task<ActionResult<EmployeeViewModel[]>> GetEmployeeByName([FromBody] string name)
@@ -244,9 +244,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
 
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<EmployeeViewModel>> UpdateEmployee(int id, EmployeeViewModel updatedEmployeeModel)
         {
             try

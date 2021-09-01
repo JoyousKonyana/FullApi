@@ -29,7 +29,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPost]
         [Route("[action]")]
 

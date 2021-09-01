@@ -148,9 +148,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteCourse(int id)
         {
             try

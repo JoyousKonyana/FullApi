@@ -54,9 +54,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
         // get question for a specific quiz
-        [Authorize(Role.Onboarder)]
+        //[Authorize(Role.Onboarder)]
         [HttpGet("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<QuestionViewModel[]>> GetQuestionsForQuiz(int id)
         {
             try
@@ -74,7 +74,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPut("{id}")]
         [Route("[action]")]
         public async Task<ActionResult<QuestionViewModel>> UpdateQuestion(int id, [FromBody] QuestionViewModel updatedQuestionModel)
@@ -102,9 +102,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
 
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteQuestion(int id)
         {
             try

@@ -26,7 +26,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _warrantyRepository = warrantyRepository;
             _mapper = mapper;
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<WarrantyViewModel>> CreateWarranty([FromBody] WarrantyViewModel model)
@@ -65,9 +65,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return BadRequest();
             }
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<WarrantyViewModel>> EditWarranty(int id, [FromBody] WarrantyViewModel updatedWarrantyModel)
         {
             try
@@ -92,9 +92,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteWarranty(int id)
         {
             try
