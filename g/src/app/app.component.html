@@ -1,0 +1,33 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
+        <a class="nav-item nav-link" routerLink="/ss_users">Users</a>
+        <a class="nav-item nav-link" routerLink="/ss_administrator">Administrator</a>
+        <a class="nav-item nav-link" routerLink="/ss_course">Course</a>
+        <a class="nav-item nav-link" routerLink="/ss_equipment">Equipment</a>
+        <a class="nav-item nav-link" routerLink="/ss_onboarder">Onboarder</a>
+        <a class="nav-item nav-link" routerLink="/ss_report">Report</a>
+
+      <a class="nav-item nav-link" routerLink="/crud_faq">CRUD FAQ</a>
+
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div>
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center mt-4">
+    <p>
+        <a href="https://jasonwatmore.com/post/2020/09/09/angular-10-role-based-authorization-tutorial-with-example" target="_top">Angular 10 - Role Based Authorization Tutorial with Example</a>
+    </p>
+    <p>
+        <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+    </p>
+</div>
