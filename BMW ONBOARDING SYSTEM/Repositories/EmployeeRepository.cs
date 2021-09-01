@@ -28,8 +28,7 @@ namespace BMW_ONBOARDING_SYSTEM.Repositories
 
         public async Task<Employee[]> GetAllEmployeesAsync()
         {
-            IQueryable<Employee> results = _inf370ContextDB.Employee.OrderBy(c =>
-             c.FirstName);
+            IQueryable<Employee> results = _inf370ContextDB.Employee.Include(x => x.Department).Include(x => x.Title).Include(x => x.Onboarder);
 
             return await results.ToArrayAsync();
         }

@@ -56,10 +56,10 @@ export class CourseComponent implements OnInit {
   //Remove this bad boy
   testData() {
     this.course.push(
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
     );
   }
 
@@ -114,10 +114,10 @@ export class CourseComponent implements OnInit {
   myValue;
 
   editCourse(editCourseInfo) {
-    this.model2.Course_ID = this.course[editCourseInfo].Course_ID;
-    this.model2.Course_Description = this.course[editCourseInfo].Course_Description;
-    this.model2.Due_Date = this.course[editCourseInfo].Due_Date;
-    this.model2.Message = this.course[editCourseInfo].Message;
+    this.model2.Course_ID = this.course[editCourseInfo].CourseId;
+    this.model2.Course_Description = this.course[editCourseInfo].CourseDescription;
+    this.model2.Due_Date = this.course[editCourseInfo].CourseDueDate;
+    this.model2.Message = this.course[editCourseInfo].CourseName;
     this.myValue = editCourseInfo;
   }
 

@@ -26,7 +26,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _courseRepository = courseRepository;
             _mapper = mapper;
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [Route("[action]")]
         [HttpGet("name")]
         public async Task<ActionResult<CourseViewModel>> GetCourseByName([FromBody] string name)
@@ -68,7 +68,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<OnboarderCourseEnrollmentViewModel>> AssignCourse([FromBody] OnboarderCourseEnrollmentViewModel[] model)
@@ -120,16 +120,32 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Roles = Role.Admin)]
-        [HttpPut("name")]
-        [Route("[action]")]
-        public async Task<ActionResult<CourseViewModel>> UpdateCourse(string name, CourseViewModel updatedCourseModel)
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public async Task<IActionResult> GetCourseById(int id)
         {
             try
             {
-                var existingCourse = await _courseRepository.GetCourseByNameAsync(name);
+                var course = await _courseRepository.GetCourseByIdAsync(id);
+                return Ok(course);
+            }
+            catch (Exception)
+            {
 
-                if (existingCourse == null) return NotFound($"Could Not find course with the name: {name }");
+                return BadRequest();
+            }
+        }
+
+        //[Authorize(Roles = Role.Admin)]
+        [HttpPut("name")]
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<CourseViewModel>> UpdateCourse(int id, CourseViewModel updatedCourseModel)
+        {
+            try
+            {
+                var existingCourse = await _courseRepository.GetCourseByIdAsync(id);
+
+                if (existingCourse == null) return NotFound($"Could Not find course ");
 
                 _mapper.Map(updatedCourseModel, existingCourse);
 

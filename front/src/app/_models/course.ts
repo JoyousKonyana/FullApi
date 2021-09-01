@@ -1,6 +1,8 @@
 export class Course {
-    Course_ID: number;
-    Course_Description: string;
-    Due_Date: string;
-    Message: string;
-  }
+  CourseId: number;
+  CourseDescription: string;
+  CourseDueDate: string;
+  CourseName: string;
+  } 
+  
+ 

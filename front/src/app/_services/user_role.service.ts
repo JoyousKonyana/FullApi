@@ -11,7 +11,7 @@ import {User_Role} from '@app/_models';
 export class User_RoleService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api';  
+   url = 'https://localhost:44319/api/UserRoleController';  
 
   constructor(private http: HttpClient) { }  
 
@@ -24,15 +24,15 @@ export class User_RoleService {
     }  
 
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteUser_Role/' + id}`);
+    return this.http.delete(`${this.url}/DeleteUserRole/`+id);
   }
 
-  update(id, user_role) {
-    return this.http.put(`${this.url + '/UpdateUser_Role/' + id}`, user_role);
+  update(id: number, user_role:User_Role) {
+    return this.http.put(`${this.url}/UpdateUserRole`, user_role);
   }
 
-  create(user_role) {
-    return this.http.post(`${this.url + '/CreateUser_Role/'}`, user_role);
+  create(user_role: User_Role) {
+    return this.http.post(`${this.url}/CreateUserRole`, user_role);
   }
 
 } 

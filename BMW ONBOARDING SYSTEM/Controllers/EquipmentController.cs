@@ -69,18 +69,8 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 if (await _equipmentRepository.SaveChangesAsync())
                 {
 
-                    var createAuditLog = _mapper.Map<CreateAuditLogViewModel>(updatedEquipmentModel);
+               
 
-                    using (var httpClient = new HttpClient())
-                    {
-                        var auditLog = JsonSerializer.Serialize(createAuditLog);
-                        var requestContent = new StringContent(auditLog, Encoding.UTF8, "application/json");
-                        using (var response = await httpClient.PostAsync("https://localhost:44319/api/AuditLog/CreateAuditLog", requestContent))
-                        {
-                            string apiResponse = await response.Content.ReadAsStringAsync();
-
-                        }
-                    }
 
                     return _mapper.Map<EquipmentViewModel>(existingEquipment);
                 }

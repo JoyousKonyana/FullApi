@@ -12,7 +12,7 @@ import {Achievment_Type} from '@app/_models';
 export class Achievment_TypeService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api/Faq';  
+   url = 'https://localhost:44319/api/AchievementType';  
   //  header= new HttpHeaders(){
   //   // Content-Type: "application/json"
   //  };
@@ -22,19 +22,19 @@ export class Achievment_TypeService {
   constructor(private http: HttpClient) { }  
 
   getAllAchievment_Type(): Observable<Achievment_Type[]> {  
-    return this.http.get<Achievment_Type[]>(`${this.url}`);  
+    return this.http.get<Achievment_Type[]>(`${this.url}/GetAllAchievemntTypes`);  
   }  
 
-  getAchievment_TypeById(id: string): Observable<Achievment_Type> {  
-      return this.http.get<Achievment_Type>(`${this.url + '/GetAchievment_TypeById/' + id}`);  
+  getAchievment_TypeById(id: number): Observable<Achievment_Type> {  
+      return this.http.get<Achievment_Type>(`${this.url}/GetAchievementTypeByID/`+ id);  
     }  
 
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteAchievment_Type/' + id}`);
+    return this.http.delete(`${this.url}/DeleteAchievementType/`+ id);
   }
 
-  update(id, achievment_type) {
-    return this.http.put(`${this.url + '/UpdateAchievment_Type/' + id}`, achievment_type);
+  update(id: number, achievment_type:Achievment_Type) {
+    return this.http.put(`${this.url}/UpdateAchievementType/`+id, achievment_type);
   }
 
   create(achievment_type:Achievment_Type) {
