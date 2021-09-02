@@ -7,4 +7,3 @@ export class Equipment_Query {
     Onboarder_ID: Onboarder;
     Equipment_Query_Description: string;
 }
-    

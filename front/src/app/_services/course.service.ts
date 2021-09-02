@@ -28,8 +28,8 @@ export class CourseService {
     return this.http.delete(`${this.url}/DeleteCourse/`+ id);
   }
 
-  update(id, course) {
-    return this.http.put(`${this.url + '/UpdateCourse/' + id}`, course);
+  update(id: number, course: Course) {
+    return this.http.put(`${this.url}/UpdateCourse`+ id, course);
   }
 
   create(course) {

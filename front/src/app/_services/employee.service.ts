@@ -22,8 +22,8 @@ export class EmployeeService {
   getInformationToRegister(){
     return this.http.get<Employee[]>(`${this.url}/Get`);
   }
-  getAllEmployee(): Observable<Employee[]> {  
-    return this.http.get<Employee[]>(`${this.url}/GetAllEmployees`);  
+  getAllEmployee(): Observable<any> {  
+    return this.http.get<any>(`${this.url}/GetAllEmployees`);  
   }  
 
   getEmployeeById(id: number): Observable<Employee> {  
@@ -31,7 +31,7 @@ export class EmployeeService {
     }  
 
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteEmployee/' + id}`);
+    return this.http.delete(`${this.url}/`+ id);
   }
 
   update(id, employee:Employee) {

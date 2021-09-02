@@ -1,3 +1,7 @@
+import { CheckOut } from './../_models/checkoutModel';
+import { ReportsModel } from './../_models/reportModel';
+import { EquipmentQuery } from './../_models/equipmentquery';
+import { AssignEquipment } from './../_models/assigequipment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';  
 import { HttpHeaders } from '@angular/common/http';  
@@ -11,7 +15,7 @@ import {Equipment} from '@app/_models';
 export class EquipmentService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api';  
+   url = 'https://localhost:44319/api/Equipment';  
 
   constructor(private http: HttpClient) { }  
 
@@ -24,15 +28,37 @@ export class EquipmentService {
     }  
 
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteEquipment/' + id}`);
+    return this.http.delete(`${this.url}/DeleteEquipment/`+ id);
   }
 
-  update(id, equipment) {
-    return this.http.put(`${this.url + '/UpdateEquipment/' + id}`, equipment);
+  update(id:number, equipment:Equipment) {
+    return this.http.put(`${this.url}/UpdateEquipment`+ id, equipment);
   }
 
   create(equipment) {
-    return this.http.post(`${this.url + '/CreateEquipment/'}`, equipment);
+    return this.http.post(`${this.url}/RegisterEquipment`,equipment);
+  }
+
+  AssignEquipment(assignedEquipment:AssignEquipment){
+    return this.http.post(`${this.url}/AssignedEquipment`,assignedEquipment);
+  }
+  GetAssignedEquipment(id: number){
+    return this.http.get(`${this.url}/GetAssignedEquipment`+ id);
+  }
+
+  ReportEquipmentQuery(equipmentQuery:EquipmentQuery){
+    return this.http.post(`${this.url}/ReportEquipmentQuery`,equipmentQuery);
+  }
+
+  generateEquipmentReport(reportdata: ReportsModel){
+    return this.http.post(`${this.url}/GenerateEquipmentReport`,reportdata);
+  }
+  
+  generateTradeInReport(reportdata: ReportsModel){
+    return this.http.post(`${this.url}/GenerateTradeInReport`,reportdata);
+  }
+  checkoutEquipment(equipcheckout:CheckOut){
+    return this.http.put(`${this.url}/EquipmentDueForTradeIn`,equipcheckout);
   }
 
 } 
