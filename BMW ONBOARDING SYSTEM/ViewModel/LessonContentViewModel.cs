@@ -12,7 +12,10 @@ namespace BMW_ONBOARDING_SYSTEM.ViewModel
         public int? LessonOutcomeId { get; set; }
         public int? ArchiveStatusId { get; set; }
         public string LessonContentDescription { get; set; }
-        public string Link { get; set; }
-     
+        public string LessonContent1 { get; set; }
+
+
+       
+
     }
 }

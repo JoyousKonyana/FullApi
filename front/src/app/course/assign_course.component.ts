@@ -67,7 +67,7 @@ private loadAll() {
   //Remove this bad boy
   testData() {
     this.course.push(
-      { CourseId: 1, CourseDescription: '321', CourseDueDate: "26/02/01",CourseName:''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '26/02/01',CourseName:''},
       { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
       { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
       { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},

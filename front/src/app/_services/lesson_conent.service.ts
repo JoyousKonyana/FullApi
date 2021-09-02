@@ -11,28 +11,37 @@ import {Lesson_Content} from '@app/_models';
 export class Lesson_ContentService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api';  
+   url = 'https://localhost:44319/api/LessonContent';  
 
   constructor(private http: HttpClient) { }  
 
   getAllLesson_Content(): Observable<Lesson_Content[]> {  
-    return this.http.get<Lesson_Content[]>(`${this.url}`);  
+    return this.http.get<Lesson_Content[]>(`${this.url}/`);  
   }  
 
   getLesson_ContentById(id: string): Observable<Lesson_Content> {  
       return this.http.get<Lesson_Content>(`${this.url + '/GetLesson_ContentById/' + id}`);  
     }  
 
+    getLesson_ContentByLessonoutcomeId(id: string): Observable<Lesson_Content> {  
+      return this.http.get<Lesson_Content>(`${this.url}/GetLessonContentByLessonOutcome/`+id);  
+    } 
+
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteFAQ/' + id}`);
+    return this.http.delete(`${this.url}/DeleteLessonContent/`+id);
   }
 
   update(id, lesson_content) {
-    return this.http.put(`${this.url + '/UpdateLesson_Content/' + id}`, lesson_content);
+    return this.http.put(`${this.url}/UpdateLessonContent`+ id, lesson_content);
   }
 
   create(lesson_content) {
-    return this.http.post(`${this.url + '/CreateLesson_Content/'}`, lesson_content);
+    return this.http.post(`${this.url}/UploadContentLink`, lesson_content);
+  }
+
+
+  AchiveLessonContent(id: number, lessoncontent:Lesson_Content) {
+    return this.http.put(`${this.url}/AchiveLessonContent/`+id,lessoncontent);
   }
 
 } 

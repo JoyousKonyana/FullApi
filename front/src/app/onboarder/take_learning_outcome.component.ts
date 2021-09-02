@@ -1,3 +1,4 @@
+import { Lesson_Content } from '@app/_models';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -35,7 +36,7 @@ export class Take_Learning_OutcomeComponent implements OnInit {
   }
 
   private loadAll() {
-    this.learning_outcomeService.getLearning_OutcomeById(this._Activatedroute.snapshot.paramMap.get("id"))
+    this.learning_outcomeService.getLearning_OutcomeById(Number(this._Activatedroute.snapshot.paramMap.get("id")))
     .pipe(first())
     .subscribe(
       lesson_outcome => {
@@ -50,11 +51,11 @@ export class Take_Learning_OutcomeComponent implements OnInit {
   //Remove this bad boy
   testData() {
     this.lesson_outcome.push(
-      { Learning_Outcome_ID: 123, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 234, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 345, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 456, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 567, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
+      { LessonOutcomeId: 123, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women', LessonOutcomeName: '123'},
+      { LessonOutcomeId: 234, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: '123'},
+      { LessonOutcomeId: 345, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: '123'},
+      { LessonOutcomeId: 456, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: '123'},
+      { LessonOutcomeId: 567, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: '123'},
     );
   }
 

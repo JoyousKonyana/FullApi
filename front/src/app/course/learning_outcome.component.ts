@@ -58,11 +58,11 @@ export class Learning_OutcomeComponent implements OnInit {
   //Remove this bad boy
   testData() {
     this.lesson_outcome.push(
-      { Learning_Outcome_ID: 123, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 234, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 345, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 456, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
-      { Learning_Outcome_ID: 567, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
+      { LessonOutcomeId: 123, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: "12345"},
+      { LessonOutcomeId: 234, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: "12345"},
+      { LessonOutcomeId: 345, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: "12345"},
+      { LessonOutcomeId: 456, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: "12345"},
+      { LessonOutcomeId: 567, LessonId: 1, LessonOutcomeDescription: 'This lesson outcome you will learn how to take to women',LessonOutcomeName: "12345"},
     );
   }
 
@@ -119,8 +119,8 @@ export class Learning_OutcomeComponent implements OnInit {
   editLearning_Outcome(editLearning_OutcomeInfo) {
     this.updateLearning_OutcomeClicked = !this.updateLearning_OutcomeClicked;
 
-    this.model2.Learning_Outcome_ID = this.lesson_outcome[editLearning_OutcomeInfo].Learning_Outcome_ID;
-    this.model2.Lesson_Outcome_Description = this.lesson_outcome[editLearning_OutcomeInfo].Lesson_Outcome_Description;
+    this.model2.Learning_Outcome_ID = this.lesson_outcome[editLearning_OutcomeInfo].LessonOutcomeId;
+    this.model2.Lesson_Outcome_Description = this.lesson_outcome[editLearning_OutcomeInfo].LessonOutcomeDescription;
     this.myValue = editLearning_OutcomeInfo;
   }
 

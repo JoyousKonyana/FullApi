@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BMW_ONBOARDING_SYSTEM.Repositories
 {
-    public class QuestionRepository : IQuestionRepository
+    public class LessonRepository : ILessonRepository
     {
         private readonly INF370DBContext _inf370ContextDB;
 
-        public QuestionRepository(INF370DBContext inf370ContextDB)
+        public LessonRepository(INF370DBContext inf370ContextDB)
         {
             _inf370ContextDB = inf370ContextDB;
         }
@@ -25,25 +25,29 @@ namespace BMW_ONBOARDING_SYSTEM.Repositories
         {
             _inf370ContextDB.Remove(entity);
         }
-
-        public async Task<Question[]> GetQuestionAllquestionAsync()
+        public async Task<Lesson[]> GetAllLessonAsync()
         {
+            IQueryable<Lesson> lessons = _inf370ContextDB.Lesson;
 
-            IQueryable<Question> questions = _inf370ContextDB.Question;
-
-            return await questions.ToArrayAsync();
+            return await lessons.ToArrayAsync();
         }
 
-        public Task<Question> GetQuestionByquestionIDAsync(int questionID)
+       
+
+        public Task<Lesson> GetLessonByCourseIdAsync(int courseID)
         {
-            IQueryable<Question> result = _inf370ContextDB.Question.Where(q => q.QuestionId == questionID);
-            return result.FirstOrDefaultAsync();
+            IQueryable<Lesson> existingLesson = _inf370ContextDB.Lesson.Where(id => id.CourseId == courseID);
+
+
+            return existingLesson.FirstOrDefaultAsync();
         }
 
-        public Task<Question[]> GetQuestionByQuizIDAsync(int quizID)
+        public Task<Lesson> GetLessonByIdAsync(int lessonID)
         {
-            IQueryable<Question> result = _inf370ContextDB.Question.Where(q => q.QuizId == quizID);
-            return result.ToArrayAsync();
+            IQueryable<Lesson> existingLesson = _inf370ContextDB.Lesson.Where(id => id.LessonId == lessonID);
+
+
+            return existingLesson.FirstOrDefaultAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

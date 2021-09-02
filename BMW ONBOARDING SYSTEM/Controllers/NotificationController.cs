@@ -49,8 +49,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Route("[action]/{id}")]
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteNotification(int id)
         {
             try
             {

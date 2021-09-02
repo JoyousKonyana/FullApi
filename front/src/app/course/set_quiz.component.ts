@@ -51,12 +51,12 @@ export class Set_QuizComponent implements OnInit {
     this.question.push(
       {
         Question_ID:1,
-        Question_Type_ID: '6',
-        Quiz_ID: 3,
-        Question_Category_ID: 4,
-        Question_Description:'What is the best car in the world',
-        Question_Answer:'2',
-        Question_Mark_Allocation: '',
+        Question_Type_ID: 6,
+        QuizId: 3,
+        QuestionCategoryId: 4,
+        QuestionDescription:'What is the best car in the world',
+        QuestionAnswer:'2',
+        QuestionMarkAllocation: 10,
       },
     );
   }

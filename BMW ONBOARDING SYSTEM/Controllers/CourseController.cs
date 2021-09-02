@@ -137,7 +137,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
         //[Authorize(Roles = Role.Admin)]
-        [HttpPut("name")]
+        [HttpPut("{id}")]
         [Route("[action]/{id}")]
         public async Task<ActionResult<CourseViewModel>> UpdateCourse(int id, CourseViewModel updatedCourseModel)
         {

@@ -42,6 +42,7 @@ export class EquipmentService {
   AssignEquipment(assignedEquipment:AssignEquipment){
     return this.http.post(`${this.url}/AssignedEquipment`,assignedEquipment);
   }
+  //used by onboarder
   GetAssignedEquipment(id: number){
     return this.http.get(`${this.url}/GetAssignedEquipment`+ id);
   }

@@ -28,7 +28,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<QuestionViewModel>> Createquestion([FromBody] QuestionViewModel model)
@@ -74,9 +74,45 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<QuestionViewModel[]>> GetQuestionsById(int id)
+        {
+            try
+            {
+                var result = await _questionRepository.GetQuestionByquestionIDAsync(id);
+
+                if (result == null) return NotFound();
+
+                return _mapper.Map<QuestionViewModel[]>(result);
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<QuestionViewModel[]>> GetAllQuestions(int id)
+        {
+            try
+            {
+                var result = await _questionRepository.GetQuestionAllquestionAsync();
+
+                if (result == null) return NotFound();
+
+                return _mapper.Map<QuestionViewModel[]>(result);
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
         //[Authorize(Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<QuestionViewModel>> UpdateQuestion(int id, [FromBody] QuestionViewModel updatedQuestionModel)
         {
             try

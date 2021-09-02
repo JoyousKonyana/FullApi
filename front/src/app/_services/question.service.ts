@@ -11,7 +11,7 @@ import {Question} from '@app/_models';
 export class QuestionService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api/Faq';  
+   url = 'https://localhost:44319/api/Question';  
   //  header= new HttpHeaders(){
   //   // Content-Type: "application/json"
   //  };
@@ -21,19 +21,23 @@ export class QuestionService {
   constructor(private http: HttpClient) { }  
 
   getAllQuestion(): Observable<Question[]> {  
-    return this.http.get<Question[]>(`${this.url}`);  
+    return this.http.get<Question[]>(`${this.url}/GetAllQuestions`);  
   }  
 
-  getQuestionById(id: string): Observable<Question> {  
-      return this.http.get<Question>(`${this.url + '/GetQuestionById/' + id}`);  
+  getQuestionById(id: number): Observable<Question> {  
+      return this.http.get<Question>(`${this.url}/GetQuestionsById/`+id);  
+    }  
+
+    getQuestionsforQuiz(id: number): Observable<Question[]> {  
+      return this.http.get<Question[]>(`${this.url}/GetQuestionsForQuiz/`+id);  
     }  
 
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteQuestion/' + id}`);
+    return this.http.delete(`${this.url}/DeleteQuestion/`+ id);
   }
 
-  update(id, question) {
-    return this.http.put(`${this.url + '/UpdateQuestion/' + id}`, question);
+  update(id:number, question:Question) {
+    return this.http.put(`${this.url}/UpdateQuestion/`+ id, question);
   }
 
   create(question:Question) {

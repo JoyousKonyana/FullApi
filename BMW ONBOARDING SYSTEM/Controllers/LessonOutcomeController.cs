@@ -28,7 +28,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Role.Admin)]
+        //[Authorize(Role.Admin)]
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllLessonOutcomes()
@@ -64,7 +64,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
-        [Authorize(Role.Admin + "," + Role.Onboarder)]
+        //[Authorize(Role.Admin + "," + Role.Onboarder)]
         [HttpGet("{id}")]
         [Route("[action]/{id}")]
         public async Task<ActionResult<LessonOutcomeViewModel>> GeLessonOutcomeByLessonId(int lessonID)
@@ -108,15 +108,15 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
         //[Authorize(Role.Admin)]
-        [HttpPut("name")]
-        [Route("[action]")]
-        public async Task<ActionResult<LessonOutcomeViewModel>> UpdateLessonOutcome(string name, LessonOutcomeViewModel updatedCourseModel)
+        [HttpPut("{id}")]
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<LessonOutcomeViewModel>> UpdateLessonOutcome(int id, LessonOutcomeViewModel updatedCourseModel)
         {
             try
             {
-                var existingLessonOutcome = await _lessonOutcomeRepository.GetLessonOutcomeByNameAsync(name);
+                var existingLessonOutcome = await _lessonOutcomeRepository.GetLessonOutcomeIdAsync(id);
 
-                if (existingLessonOutcome == null) return NotFound($"Could Not find course with the name: {name }");
+                if (existingLessonOutcome == null) return NotFound($"Could Not find this lesson outcome ");
 
                 _mapper.Map(updatedCourseModel, existingLessonOutcome);
 

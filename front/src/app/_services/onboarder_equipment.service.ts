@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import {Onboarder_Equipment} from '@app/_models';
+import { AssignEquipment } from '@app/_models/assigequipment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,14 @@ export class Onboarder_EquipmentService {
     return this.http.put(`${this.url + '/UpdateOnboarder_Equipment/' + id}`, onboarder_equipment);
   }
 
-  create(onboarder_equipment) {
-    return this.http.post(`${this.url + '/CreateOnboarder_Equipment/'}`, onboarder_equipment);
+  create(onboarder_equipment:AssignEquipment) {
+    return this.http.post(`${this.url}/AssignedEquipment`, onboarder_equipment);
   }
 
+  AssignEquipment(assignedEquipment:AssignEquipment[]){
+    return this.http.post(`${this.url}/AssignedEquipment2`,assignedEquipment);
+  }
+  GetAssignedEquipment(id: number){
+    return this.http.get(`${this.url}/GetAssignedEquipment`+ id);
+  }
 } 

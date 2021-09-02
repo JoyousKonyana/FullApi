@@ -11,28 +11,35 @@ import {Learning_Outcome} from '@app/_models';
 export class Learning_OutcomeService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api';  
+   url = 'https://localhost:44319/api/LessonOutcome';  
 
   constructor(private http: HttpClient) { }  
 
   getAllLearning_Outcome(): Observable<Learning_Outcome[]> {  
-    return this.http.get<Learning_Outcome[]>(`${this.url}`);  
+    return this.http.get<Learning_Outcome[]>(`${this.url}/GetAllLessonOutcomes`);  
   }  
 
-  getLearning_OutcomeById(id: string): Observable<Learning_Outcome> {  
-      return this.http.get<Learning_Outcome>(`${this.url + '/GetLearning_OutcomeById/' + id}`);  
+  getLearning_OutcomeById(id: number): Observable<Learning_Outcome> {  
+      return this.http.get<Learning_Outcome>(`${this.url}/GeLessonOutcomeByLessonId/`+id);  
     }  
 
+    getLearning_OutcomeByLessonID(id: number): Observable<Learning_Outcome> {  
+      return this.http.get<Learning_Outcome>(`${this.url}/GeLessonOutcomeByLessonId/`+id);  
+    } 
+
   delete(id: number) {
-    return this.http.delete(`${this.url + '/DeleteLearning_Outcome/' + id}`);
+    return this.http.delete(`${this.url}/DeleteLessonOutcome/`+id);
   }
 
-  update(id, learning_outcome) {
-    return this.http.put(`${this.url + '/UpdateLearning_Outcome/' + id}`, learning_outcome);
+  update(id: number, learning_outcome: Learning_Outcome) {
+    return this.http.put(`${this.url}/UpdateLessonOutcome/`+ id, learning_outcome);
   }
 
-  create(learning_outcome) {
-    return this.http.post(`${this.url + '/CreateLearning_Outcome/'}`, learning_outcome);
+  create(learning_outcome: Learning_Outcome) {
+    return this.http.post(`${this.url}/CreateLessonOutcome`, learning_outcome);
   }
+
+ 
+
 
 } 

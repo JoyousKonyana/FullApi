@@ -30,6 +30,9 @@ namespace BMW_ONBOARDING_SYSTEM.Profiles
             this.CreateMap<LessonContent, LessonContentViewModel>().
                 ReverseMap();
 
+            this.CreateMap<Lesson, LessonViewModel>().
+               ReverseMap();
+
             this.CreateMap<EmployeeCalendar, EmployeeCalendarViewModel>().
                ReverseMap();
 
