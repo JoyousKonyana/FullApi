@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import { Learning_Outcome } from '../_models';
 import { AlertService, Learning_OutcomeService } from '../_services';
@@ -14,24 +15,27 @@ export class Take_Learning_OutcomeComponent implements OnInit {
 
   lesson_outcome: Learning_Outcome[] = [];
 
-  faqIdUpdate = null;  
-  massage = null;
-
   constructor(
       private learning_outcomeService: Learning_OutcomeService,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private _Activatedroute:ActivatedRoute,
+      private _router:Router,
   ) {
 
   }
 
+  id;
+
+  sub;
+
   ngOnInit() { 
       this.loadAll();
+
+      this.id=this._Activatedroute.snapshot.paramMap.get("id");
   }
 
-  
-
   private loadAll() {
-    this.learning_outcomeService.getLearning_OutcomeById(id)
+    this.learning_outcomeService.getLearning_OutcomeById(this._Activatedroute.snapshot.paramMap.get("id"))
     .pipe(first())
     .subscribe(
       lesson_outcome => {
@@ -43,15 +47,6 @@ export class Take_Learning_OutcomeComponent implements OnInit {
     );
   }
 
-    newLesson_OutcomeClicked = false;
-
-    updateLearning_OutcomeClicked = false;
-
-  color;
-
-  model: any = {};
-  model2: any = {}; 
-
   //Remove this bad boy
   testData() {
     this.lesson_outcome.push(
@@ -62,7 +57,5 @@ export class Take_Learning_OutcomeComponent implements OnInit {
       { Learning_Outcome_ID: 567, Lesson_ID: 1, Lesson_Outcome_Description: 'This lesson outcome you will learn how to take to women'},
     );
   }
-
-  myValue;
 
 }

@@ -7,9 +7,9 @@
     {{course.id}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{course.name}}</h5>
-    <p class="card-text">{{course.description}}.</p>
-    <a href="#" class="btn btn-primary" routerLink="/take_learning_outcome">Take Course</a>
+    <h5 class="card-title">{{course.Course_ID}}</h5>
+    <p class="card-text">{{course.Course_Description}}.</p>
+    <a class="btn btn-primary" [routerLink]="['/take_learning_outcome', course.Course_ID]">Take: {{course.name}} </a>
   </div>
   <div class="card-footer text-muted">
     Duration: {{course.duration}}

@@ -12,12 +12,7 @@ import { CourseService, AuthenticationService, AlertService } from '../_services
 
 export class CourseComponent implements OnInit {
 
-  dataSaved = false;  
-  CourseForm: any;
   course: Course[] = [];
-
-  faqIdUpdate = null;  
-  massage = null;
 
   constructor(
       private courseService: CourseService,
@@ -29,8 +24,6 @@ export class CourseComponent implements OnInit {
   ngOnInit() { 
       this.loadAll();
   }
-
-  
 
   private loadAll() {
     this.courseService.getAllCourse()

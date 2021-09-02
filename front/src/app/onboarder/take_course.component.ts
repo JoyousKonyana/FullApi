@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { User } from '../_models';
-import { UserService, AuthenticationService } from '../_services';
+import { Course } from '../_models';
+import { CourseService, AlertService } from '../_services';
 
 @Component({ 
     templateUrl: 'take_course.component.html',
@@ -12,38 +12,43 @@ import { UserService, AuthenticationService } from '../_services';
 
 export class Take_CourseComponent implements OnInit {
 
-    currentUser: User;
-    currentUserSubscription: Subscription;
-    users: User[] = [];
+  course: Course[] = [];
 
-    constructor(
-    ) {
-    }
+  constructor(
+      private courseService: CourseService,
+      private alertService: AlertService
+  ) {
 
-    ngOnInit() {
-        
-    }
+  }
+
+  ngOnInit() { 
+      this.loadAll();
+  }
+
+  private loadAll() {
+    this.courseService.getAllCourse()
+    .pipe(first())
+    .subscribe(
+      course => {
+        //this.faq = faq;
+        this.course = course;
+      },
+      error => {
+        this.alertService.error('Error, Data was unsuccesfully retrieved');
+      } 
+    );
+  }
 
     newUser_RoleClicked = false;
 
-  course = [
-    { name: 'Sexual Harrasment Course', description: 'This course will help assit Onboarder to know all the rules and expectation BMW has in regards to sexual Harrasment.', id: '4762', duration: '2 Weeks'},
-    { name: 'Code of Conduct Course', description: 'This course will assist the Onboarder to know the code of conducted expected by BMW.', id: '2039', duration: '3 Weeks'},
-    { name: 'Training Course', description: 'This course', id: '6970', duration: '1 Weeks'},
-  ];
-
-  color;
-
-  
-
-  model: any = {};
-  model2: any = {};
-
-  addCourse() {
-    this.course.push(this.model);
-    this.model = {};
+  //Remove this bad boy
+  testData() {
+    this.course.push(
+      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+    );
   }
-
-  myValue;
 
 }

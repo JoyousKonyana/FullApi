@@ -93,9 +93,9 @@ const routes: Routes = [
     { path: 'ss_onboarder', component: SS_OnboarderComponent, canActivate: [AuthGuard] },
     { path: 'take_course', component: Take_CourseComponent, canActivate: [AuthGuard] },
     { path: 'faq', component: FAQComponent, canActivate: [AuthGuard] },
-    { path: 'take_learning_outcome',  component: Take_Learning_OutcomeComponent,canActivate: [AuthGuard] },
-    { path: 'take_quiz', component: Take_QuizComponent, canActivate: [AuthGuard] },
-    { path: 'take_content', component: Take_ContentComponent, canActivate: [AuthGuard] },
+    { path: 'take_learning_outcome/:id',  component: Take_Learning_OutcomeComponent,canActivate: [AuthGuard] },
+    { path: 'take_quiz/:id', component: Take_QuizComponent, canActivate: [AuthGuard] },
+    { path: 'take_content/:id', component: Take_ContentComponent, canActivate: [AuthGuard] },
     { path: 'progress', component: ProgressComponent, canActivate: [AuthGuard] },
     { path: 'ask_question', component: Ask_QuestionComponent, canActivate: [AuthGuard] },
 
@@ -103,9 +103,9 @@ const routes: Routes = [
     { path: 'ss_course', component: SS_CourseComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'course', component: CourseComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'assign_course', component: Assign_CourseComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-    { path: 'learning_outcome', component: Learning_OutcomeComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-    { path: 'learning_content', component: Learning_ContentComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
-    { path: 'set_quiz', component: Set_QuizComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+    { path: 'learning_outcome/:id', component: Learning_OutcomeComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+    { path: 'learning_content/:id', component: Learning_ContentComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
+    { path: 'set_quiz/:id', component: Set_QuizComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
     { path: 'crud_achievement', component: CRUD_AchievementComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
     //Equipment path pages

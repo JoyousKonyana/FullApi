@@ -10,6 +10,7 @@
         <p class="card-text">{{learning_outcome.Lesson_Outcome_Description}}</p>
         <a href="#" class="btn btn-primary" routerLink="/take_content">Content</a> 
         <a href="#" class="btn btn-warning" routerLink="/take_quiz">Quiz</a>
+        <a class="btn btn-primary" [routerLink]="['/take_learning_outcome', learning_outcome.Learning_Outcome_ID]">Take: {{learning_outcome.name}} </a>
       </div>
     </div>
 
