@@ -11,7 +11,7 @@ import {Onboarder_Course_Enrollment} from '@app/_models';
 export class Onboarder_Course_EnrollmentService {
 
    //Joyous, please put the link of the API here
-   url = 'https://localhost:44319/api';  
+   url = 'https://localhost:44319/api/Onboarder';  
 
   constructor(private http: HttpClient) { }  
 
@@ -19,8 +19,8 @@ export class Onboarder_Course_EnrollmentService {
     return this.http.get<Onboarder_Course_Enrollment[]>(`${this.url}`);  
   }  
 
-  getOnboarder_Course_EnrollmentById(id: string): Observable<Onboarder_Course_Enrollment> {  
-      return this.http.get<Onboarder_Course_Enrollment>(`${this.url + '/GetOnboarder_Course_EnrollmentById/' + id}`);  
+  getOnboarder_Course_EnrollmentById(id: number): Observable<Onboarder_Course_Enrollment> {  
+      return this.http.get<Onboarder_Course_Enrollment>(`${this.url}/GetAllCoursesAssignedToOnboarder/`+id);  
     }  
 
   delete(id: number) {

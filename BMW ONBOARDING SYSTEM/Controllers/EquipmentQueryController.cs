@@ -58,6 +58,22 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public async Task<IActionResult> GetQuerybyid(int id)
+        {
+            try
+            {
+                var queries = await _queryRepository.GetQueryByIDAsync(id);
+                return Ok(queries);
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
         //[Authorize(Roles = Role.Onboarder)]
         [HttpPost]
         [Route("[action]")]
@@ -82,7 +98,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<EquipmentQueryViewModelcs>> CreateQueryStatus([FromBody] EquipmentQueryStatusViewModel model)
@@ -107,7 +123,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
         }
 
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut()]
         [Route("[action]")]
         public async Task<ActionResult<ResolveQueryViewModel>> ResolveQuery(ResolveQueryViewModel model)

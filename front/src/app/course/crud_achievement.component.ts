@@ -56,10 +56,10 @@ export class CRUD_AchievementComponent implements OnInit {
   //Remove this bad boy
   testData() {
     this.achievment_type.push(
-      { Achievment_Type_ID: 1, Badge_ID: '321', Achievment_Type_Description: ''},
-      { Achievment_Type_ID: 1, Badge_ID: '321', Achievment_Type_Description: ''},
-      { Achievment_Type_ID: 1, Badge_ID: '321', Achievment_Type_Description: ''},
-      { Achievment_Type_ID: 1, Badge_ID: '321', Achievment_Type_Description: ''},
+      { AchievementTypeId: 1, BadgeId: 321, AchievementTypeDescription: ''},
+      { AchievementTypeId: 1, BadgeId: 321, AchievementTypeDescription: ''},
+      { AchievementTypeId: 1, BadgeId: 321, AchievementTypeDescription: ''},
+      { AchievementTypeId: 1, BadgeId: 321, AchievementTypeDescription: ''},
     );
   }
 
@@ -114,9 +114,9 @@ export class CRUD_AchievementComponent implements OnInit {
   myValue;
 
   editAchievment_Type(editAchievment_TypeInfo) {
-    this.model2.Achievment_Type_ID = this.achievment_type[editAchievment_TypeInfo].Achievment_Type_ID;
-    this.model2.Badge_ID = this.achievment_type[editAchievment_TypeInfo].Badge_ID;
-    this.model2.Achievment_Type_Description = this.achievment_type[editAchievment_TypeInfo].Achievment_Type_Description;
+    this.model2.Achievment_Type_ID = this.achievment_type[editAchievment_TypeInfo].AchievementTypeId;
+    this.model2.Badge_ID = this.achievment_type[editAchievment_TypeInfo].BadgeId;
+    this.model2.Achievment_Type_Description = this.achievment_type[editAchievment_TypeInfo].AchievementTypeDescription;
     this.myValue = editAchievment_TypeInfo;
 
     this.updateAchievement_TypeClicked =!this.updateAchievement_TypeClicked;

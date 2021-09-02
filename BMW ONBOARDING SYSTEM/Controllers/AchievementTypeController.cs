@@ -26,7 +26,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<CourseViewModel>> CreateAchievementType([FromBody] AchievementTypeViewModel model)
@@ -49,7 +49,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetAllAchievemntTypes()
@@ -66,7 +66,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpGet("{id}")]
         [Route("[action]")]
         public async Task<ActionResult<AchievementTypeViewModel>> GetAchievementTypeByID(int id)
@@ -85,9 +85,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPut("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<AchievementTypeViewModel>> UpdateAchievementType(int id, AchievementTypeViewModel updatedAchievementTypeModel)
         {
             try
@@ -112,9 +112,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpDelete("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> DeleteAchievementType(int id)
         {
             var name = "";

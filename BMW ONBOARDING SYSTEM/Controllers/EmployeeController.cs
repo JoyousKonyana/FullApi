@@ -84,7 +84,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return BadRequest();
             }
         }
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult> RegisterEmployee([FromBody] EmployeeViewModel model)
@@ -162,10 +162,10 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpPost]
         [Route("[action]")]
-        public async Task<ActionResult> RegisterEmployees([FromBody] EmployeeViewModel[] model)
+        public async Task<ActionResult> RegisterEmployeesFromImport([FromBody] EmployeeViewModel[] model)
         {
             try
             {
@@ -234,6 +234,43 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 if (result == null) return NotFound();
 
                 return _mapper.Map<EmployeeViewModel[]>(result);
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<EmployeeViewModel[]>> GetEmployeeById(int id)
+        {
+            try
+            {
+                var result = await _employeeRepository.GetEmployeeByID(id);
+
+                if (result == null) return NotFound();
+
+                return _mapper.Map<EmployeeViewModel[]>(result);
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ActionResult<Employee[]>> GetAllEmployees()
+        {
+            try
+            {
+                var result = await _employeeRepository.GetAllEmployeesAsync();
+
+                if (result == null) return NotFound();
+
+                return Ok(result);
             }
             catch (Exception)
             {

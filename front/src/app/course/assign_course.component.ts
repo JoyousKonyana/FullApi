@@ -67,10 +67,10 @@ private loadAll() {
   //Remove this bad boy
   testData() {
     this.course.push(
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
-      { Course_ID: 1, Course_Description: '321', Due_Date: '', Message: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: "26/02/01",CourseName:''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
+      { CourseId: 1, CourseDescription: '321', CourseDueDate: '', CourseName: ''},
     );
     this.onboarder.push(
       { Onboarder_ID: 123, Employee_ID: 12345, Equipment_Type_ID: 1, Booking_ID: 1, Suggestion_ID: 1, Registration_ID: 1 },

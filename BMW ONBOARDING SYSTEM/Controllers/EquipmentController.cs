@@ -69,18 +69,8 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 if (await _equipmentRepository.SaveChangesAsync())
                 {
 
-                    var createAuditLog = _mapper.Map<CreateAuditLogViewModel>(updatedEquipmentModel);
+               
 
-                    using (var httpClient = new HttpClient())
-                    {
-                        var auditLog = JsonSerializer.Serialize(createAuditLog);
-                        var requestContent = new StringContent(auditLog, Encoding.UTF8, "application/json");
-                        using (var response = await httpClient.PostAsync("https://localhost:44319/api/AuditLog/CreateAuditLog", requestContent))
-                        {
-                            string apiResponse = await response.Content.ReadAsStringAsync();
-
-                        }
-                    }
 
                     return _mapper.Map<EquipmentViewModel>(existingEquipment);
                 }
@@ -182,7 +172,8 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             {
 
                 var onboarderid = model.OnboarderId;
-                var assignedEquipment = await _equipmentRepository.GetEquipmentByOnboarderIDAsync(onboarderid);
+                var assignedEquipment = await _equipmentRepository.GetEquipmentByEquipmentOnboarderId(model.OnboarderId, model.EquipmentId);
+
 
                 if (assignedEquipment == null) return NotFound($"Sorry We could not find your assigned equipment");
 
@@ -237,9 +228,9 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             return BadRequest();
 
         }
-        [Authorize(Roles = Role.Onboarder)]
+        //[Authorize(Roles = Role.Onboarder)]
         [HttpGet("{id}")]
-        [Route("[action]")]
+        [Route("[action]/{id}")]
         public async Task<IActionResult> GetAssignedEquipment(int id)
         {
             try
@@ -253,7 +244,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
                 return BadRequest();
             }
         }
-        [Authorize(Roles = Role.Onboarder)]
+        //[Authorize(Roles = Role.Onboarder)]
         [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<EquipmentViewModel>> ReportEquipmentQuery([FromBody] EquipmentQueryViewModelcs model)
@@ -296,7 +287,7 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
         //[Authorize(Roles = Role.Admin)]
-        [HttpGet]
+        [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<Equipment[]>> GenerateEquipmentReport([FromBody] AuditLogViewModel model)
         {
@@ -315,8 +306,8 @@ namespace BMW_ONBOARDING_SYSTEM.Controllers
             }
         }
 
-        [Authorize(Roles = Role.Admin)]
-        [HttpGet]
+        //[Authorize(Roles = Role.Admin)]
+        [HttpPost]
         [Route("[action]")]
         public async Task<ActionResult<Equipment[]>> GenerateTradeInReport([FromBody] AuditLogViewModel model)
         {
